@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/demo.css' %}">
+
+    <title></title>
+  </head>
+  <body>
+    <img src='{% static 'images/dsb.JFIF' %}'>
+    <img src='{% static 'images/teju.JFIF' %}'>
+    <img src='{% static 'images/vena.JFIF' %}'>
+    <hr>
+    {% if jobs_list %}
+    <table id='tab'>
+      <thead>
+        <th>Date</th>
+        <th>Company</th>
+        <th>title</th>
+        <th>eligibility</th>
+        <th>address</th>
+        <th>email</th>
+        <th>phone number</th>
+      </thead>
+      {% for job in jobs_list %}
+      <tr>
+        <td>{{jobs.date}}</td>
+        <td>{{jobs.company}}</td>
+        <td>{{jobs.title}}</td>
+        <td>{{jobs.eligibility}}</td>
+        <td>{{jobs.address}}</td>
+        <td>{{jobs.email}}</td>
+        <td>{{jobs.phonenumber}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% include 'testapp/pagination.html' with page=jobs_list %}
+      {% else %}
+      <p>No Jobs Found in Hydearbad</p>
+      {% endif %}
+
+
+  </body>
+</html>
